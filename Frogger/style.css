@@ -1,0 +1,123 @@
+/* style.css */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #87CEEB, #008080);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  #game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  #grid {
+    display: grid;
+    grid-template-rows: repeat(9, 50px);
+    grid-template-columns: repeat(9, 50px);
+    gap: 2px;
+    background-color: #000;
+    border: 5px solid #333;
+    border-radius: 10px;
+  }
+  
+  .grid-cell {
+    width: 50px;
+    height: 50px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Specific block styles */
+  .starting-block {
+    background-color: #1E90FF;
+    background-image: linear-gradient(135deg, #1E90FF, #4169E1);
+    box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.3);
+  }
+  
+  .ending-block {
+    background-color: #FF4500;
+    background-image: linear-gradient(135deg, #FF6347, #FF4500);
+    box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.3);
+  }
+  
+  .safe {
+    background-color: #32CD32;
+  }
+  
+  .road {
+    background-color: #4B4B4B;
+    background-image: linear-gradient(90deg, #333, #4B4B4B, #333);
+  }
+  
+  .car {
+    background-color: #8B0000;
+    background-image: linear-gradient(135deg, #FF0000, #8B0000);
+    border-radius: 5px;
+    animation: car-blink 0.5s infinite alternate;
+  }
+  
+  @keyframes car-blink {
+    0% { box-shadow: 0 0 5px rgba(255, 0, 0, 0.5); }
+    100% { box-shadow: 0 0 10px rgba(255, 0, 0, 0.8); }
+  }
+  
+  .river {
+    background-color: #4682B4;
+    background-image: linear-gradient(to right, #1E90FF, #4682B4);
+  }
+  
+  .log {
+    background-color: #8B4513;
+    background-image: linear-gradient(135deg, #A0522D, #8B4513);
+    border-radius: 5px;
+  }
+  
+  .frog {
+    background-color: #00FF00;
+    background-image: radial-gradient(circle, #ADFF2F, #00FF00);
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0, 255, 0, 0.7);
+  }
+  
+  /* Info section */
+  #info {
+    text-align: center;
+    color: #FFF;
+  }
+  
+  button {
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #32CD32;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
+  }
+  
+  button:hover {
+    background-color: #228B22;
+  }
+  
+  #timer {
+    font-size: 20px;
+    margin: 10px 0;
+  }
+  
+  #status {
+    font-size: 18px;
+    font-weight: bold;
+    color: yellow;
+    margin-top: 10px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  }
+  
