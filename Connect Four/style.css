@@ -1,0 +1,126 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    background: linear-gradient(135deg, #74ebd5, #acb6e5);
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+h1 {
+    font-size: 3rem;
+    color: #2c3e50;
+    margin-top: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+h3 {
+    font-size: 1.5rem;
+    color: #34495e;
+    margin-top: 10px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Game Board */
+#board {
+    display: grid;
+    grid-template-columns: repeat(7, 80px);
+    gap: 10px;
+    justify-content: center;
+    margin: 30px auto;
+    background: #34495e;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    width: fit-content;
+}
+
+.cell {
+    width: 80px;
+    height: 80px;
+    background-color: #ecf0f1;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    box-shadow: inset 0 -4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+}
+
+.cell:hover {
+    background-color: #bdc3c7;
+    transform: scale(1.1);
+    box-shadow: inset 0 -3px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Player Colors */
+.red {
+    background: radial-gradient(circle, #e74c3c 60%, #c0392b 100%);
+    box-shadow: 0 0 10px rgba(231, 76, 60, 0.8), inset 0 -4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.yellow {
+    background: radial-gradient(circle, #f1c40f 60%, #f39c12 100%);
+    box-shadow: 0 0 10px rgba(241, 196, 15, 0.8), inset 0 -4px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Winning Cells */
+.cell.winning {
+    animation: glow 1s infinite;
+}
+
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 10px 6px rgba(46, 204, 113, 0.7);
+    }
+    50% {
+        box-shadow: 0 0 20px 12px rgba(46, 204, 113, 0.9);
+    }
+}
+
+/* Reset Button */
+#reset {
+    margin-top: 20px;
+    padding: 12px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(135deg, #4caf50, #43a047);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+}
+
+#reset:hover {
+    background: linear-gradient(135deg, #43a047, #388e3c);
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    #board {
+        grid-template-columns: repeat(7, 60px);
+        gap: 8px;
+    }
+
+    .cell {
+        width: 60px;
+        height: 60px;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+    }
+
+    #reset {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+}
