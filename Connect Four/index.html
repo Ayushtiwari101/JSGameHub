@@ -3,14 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connect-Four</title>
+    <title>Enhanced Connect Four</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Connect Four</h1>
-    <h3 id="status">Player 1's Turn (Red)</h3>
-    <div id="board"></div>
-    <button id="reset">Restart Game</button>
+    <div class="game-container">
+        <!-- Theme Selector -->
+        <div class="theme-selector">
+            <label for="theme">Choose Theme:</label>
+            <select id="theme">
+                <option value="classic">Classic</option>
+                <option value="futuristic">Futuristic</option>
+                <option value="fantasy">Fantasy</option>
+            </select>
+        </div>
+
+        <h1>Connect Four</h1>
+        
+        <!-- Score Board -->
+        <div class="score-board">
+            <div class="player-score">
+                <h3>Player 1</h3>
+                <p id="player1-score">0</p>
+            </div>
+            <div class="player-score">
+                <h3>Player 2</h3>
+                <p id="player2-score">0</p>
+            </div>
+        </div>
+
+        <h2 id="current-player">Player 1's Turn</h2>
+        
+        <!-- Game Grid -->
+        <div class="grid">
+            <!-- Row 1 -->
+            <div class="cell" data-column="0"></div>
+            <div class="cell" data-column="1"></div>
+            <div class="cell" data-column="2"></div>
+            <div class="cell" data-column="3"></div>
+            <div class="cell" data-column="4"></div>
+            <div class="cell" data-column="5"></div>
+            <div class="cell" data-column="6"></div>
+
+            <!-- Row 2 -->
+            <div class="cell" data-column="0"></div>
+            <div class="cell" data-column="1"></div>
+            <div class="cell" data-column="2"></div>
+            <div class="cell" data-column="3"></div>
+            <div class="cell" data-column="4"></div>
+            <div class="cell" data-column="5"></div>
+            <div class="cell" data-column="6"></div>
+
+            <!-- Row 3 -->
+            <div class="cell" data-column="0"></div>
+            <div class="cell" data-column="1"></div>
+            <div class="cell" data-column="2"></div>
+            <div class="cell" data-column="3"></div>
+            <div class="cell" data-column="4"></div>
+            <div class="cell" data-column="5"></div>
+            <div class="cell" data-column="6"></div>
+
+            <!-- Row 4 -->
+            <div class="cell" data-column="0"></div>
+            <div class="cell" data-column="1"></div>
+            <div class="cell" data-column="2"></div>
+            <div class="cell" data-column="3"></div>
+            <div class="cell" data-column="4"></div>
+            <div class="cell" data-column="5"></div>
+            <div class="cell" data-column="6"></div>
+
+            <!-- Row 5 -->
+            <div class="cell" data-column="0"></div>
+            <div class="cell" data-column="1"></div>
+            <div class="cell" data-column="2"></div>
+            <div class="cell" data-column="3"></div>
+            <div class="cell" data-column="4"></div>
+            <div class="cell" data-column="5"></div>
+            <div class="cell" data-column="6"></div>
+
+            <!-- Row 6 -->
+            <div class="cell" data-column="0"></div>
+            <div class="cell" data-column="1"></div>
+            <div class="cell" data-column="2"></div>
+            <div class="cell" data-column="3"></div>
+            <div class="cell" data-column="4"></div>
+            <div class="cell" data-column="5"></div>
+            <div class="cell" data-column="6"></div>
+        </div>
+
+        <!-- Game Controls -->
+        <div class="controls">
+            <button id="reset-button">Reset Game</button>
+            <button id="reset-scores">Reset Scores</button>
+            <label>
+                <input type="checkbox" id="sound-toggle" checked>
+                Sound Effects
+            </label>
+        </div>
+    </div>
+
+    <!-- Audio Elements -->
+    <audio id="piece-drop">
+        <source src="data:audio/mpeg;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4Ljc2LjEwMAAAAAAAAAAAAAAA//tQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWGluZwAAAA8AAAACAAADQABISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhI//////////////////////////////////////////////////////////////////8AAAAATGF2YzU4LjEzAAAAAAAAAAAAAAAAJAAAAAAAAAAAA0B+TTyu//tQxAAAAAAAAAAAAAAAAAAAAAAASW5mbwAAAA8AAAACAAADQABISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhI//////////////////////////////////////////////////////////////////8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//tQxAAABLwFEGVgAAqQCGdcQAAQKXEP//EgkEgkEgkEgnEQCAQCAQCAQBAgCAIAgCAIAgCAIAgCAIAgCAIAgUCgUCgUCgUGg0Gg0Gg0Gg0Gg0Gg0GgkEgkEgkEgkEgkEgkEgkEgkEgkEgkEgkEgkEgkEg8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8" type="audio/mpeg">
+    </audio>
+    <audio id="win-sound">
+        <source src="data:audio/mpeg;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4Ljc2LjEwMAAAAAAAAAAAAAAA//tQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWGluZwAAAA8AAAACAAADQABISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhI//////////////////////////////////////////////////////////////////8AAAAATGF2YzU4LjEzAAAAAAAAAAAAAAAAJAAAAAAAAAAAA0B+TTyu//tQxAAAAAAAAAAAAAAAAAAAAAAASW5mbwAAAA8AAAACAAADQABISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhI//////////////////////////////////////////////////////////////////8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//tQxAAABLwFEGVgAAqQCGdcQAAQKXEP//EgkEgkEgkEgnEQCAQCAQCAQBAgCAIAgCAIAgCAIAgCAIAgCAIAgUCgUCgUCgUGg0Gg0Gg0Gg0Gg0Gg0GgkEgkEgkEgkEgkEgkEgkEgkEgkEgkEgkEgkEgkEg8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8" type="audio/mpeg">
+    </audio>
+    <audio id="draw-sound">
+        <source src="data:audio/mpeg;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4Ljc2LjEwMAAAAAAAAAAAAAAA//tQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWGluZwAAAA8AAAACAAADQABISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhI//////////////////////////////////////////////////////////////////8AAAAATGF2YzU4LjEzAAAAAAAAAAAAAAAAJAAAAAAAAAAAA0B+TTyu//tQxAAAAAAAAAAAAAAAAAAAAAAASW5mbwAAAA8AAAACAAADQABISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhI//////////////////////////////////////////////////////////////////8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//tQxAAABLwFEGVgAAqQCGdcQAAQKXEP//EgkEgkEgkEgnEQCAQCAQCAQBAgCAIAgCAIAgCAIAgCAIAgCAIAgUCgUCgUCgUGg0Gg0Gg0Gg0Gg0Gg0GgkEgkEgkEgkEgkEgkEgkEgkEgkEgkEgkEgkEgkEg8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8" type="audio/mpeg">
+    </audio>
+
+    <!-- Scripts -->
     <script src="app.js"></script>
 </body>
 </html>
