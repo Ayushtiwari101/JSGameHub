@@ -1,0 +1,153 @@
+/* Optimized CSS with better performance */
+:root {
+    --bg-color: #000235;
+    --grid-color: rgba(0, 0, 0, 0.8);
+    --border-color: #304ffe;
+    --shooter-color: #00ff00;
+    --invader-color: #ff0000;
+    --laser-color: #00ffff;
+    --explosion-color: #ffff00;
+    --text-color: #ffffff;
+    --button-color: #304ffe;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, var(--bg-color), #1a1a4a);
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    font-family: system-ui, -apple-system, sans-serif;
+    color: var(--text-color);
+}
+
+.game-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--grid-color);
+    border-radius: 1rem;
+    box-shadow: 0 0 2rem rgba(0, 0, 255, 0.2);
+}
+
+.game-stats {
+    display: flex;
+    gap: 2rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.grid {
+    width: 450px;
+    height: 450px;
+    display: grid;
+    grid-template-columns: repeat(15, 1fr);
+    background: var(--grid-color);
+    border: 3px solid var(--border-color);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    will-change: contents;
+}
+
+.reset-button {
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--text-color);
+    background-color: var(--button-color);
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.reset-button:hover {
+    background-color: #4a6aff;
+    transform: scale(1.05);
+}
+
+.reset-button:active {
+    transform: scale(0.95);
+}
+
+.cell {
+    width: 100%;
+    height: 100%;
+    transition: background-color 0.1s ease;
+}
+
+.shooter {
+    background-color: var(--shooter-color);
+    border-radius: 0.25rem;
+    box-shadow: 0 0 1rem var(--shooter-color);
+}
+
+.invader {
+    background-color: var(--invader-color);
+    border-radius: 50%;
+    box-shadow: 0 0 1rem var(--invader-color);
+}
+
+.laser {
+    background-color: var(--laser-color);
+    box-shadow: 0 0 1rem var(--laser-color);
+}
+
+.boom {
+    background-color: var(--explosion-color);
+    border-radius: 50%;
+    animation: explode 0.3s ease-out forwards;
+}
+
+.message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    display: none;
+}
+
+.game-over {
+    background: rgba(255, 0, 0, 0.9);
+}
+
+.winner {
+    background: rgba(0, 255, 0, 0.9);
+}
+
+.controls {
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+@keyframes explode {
+    to {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+@media (max-width: 500px) {
+    .grid {
+        width: 300px;
+        height: 300px;
+    }
+    
+    .game-stats {
+        font-size: 1rem;
+    }
+}
